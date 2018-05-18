@@ -10,6 +10,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by LaunchCode
@@ -123,6 +124,28 @@ public class JobData {
             System.out.println("Failed to load job data");
             e.printStackTrace();
         }
+    }
+
+    public static findByValue(ArrayList<HashMap<String, String>> allJobs, String searchTerm) {
+
+        loadData();
+
+        String asterisks = "*****";
+
+        if (allJobs.size() == 0) {
+            System.out.println("No jobs available");
+            return ;
+        }
+
+
+        for (HashMap<String, String> job : allJobs) {
+            for (Map.Entry<String, String> listing : job.entrySet())
+                if (job.containsKey(searchTerm)){
+                    System.out.println(listing.getKey() + ": " + listing.getValue());
+                }
+        }
+
+
     }
 
 }
