@@ -63,7 +63,9 @@ public class TechJobs {
 
                 if (searchField.equals("all")) {
                     // WHY ISN'T THIS WORKING????
-                    JobData.findByValue(JobData.findAll(), searchTerm);
+                    printJobs(JobData.findByValue(searchTerm));
+                } else {
+                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
             }
         }

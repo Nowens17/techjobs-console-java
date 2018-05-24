@@ -58,12 +58,12 @@ public class JobData {
     /**
      * Returns results of search the jobs data by key/value, using
      * inclusion of the search term.
-     *
+     * <p>
      * For example, searching for employer "Enterprise" will include results
      * with "Enterprise Holdings, Inc".
      *
-     * @param column   Column that should be searched.
-     * @param value Value of teh field to search for
+     * @param column Column that should be searched.
+     * @param value  Value of teh field to search for
      * @return List of all jobs matching the criteria
      */
     public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
@@ -126,26 +126,51 @@ public class JobData {
         }
     }
 
-    public static findByValue(ArrayList<HashMap<String, String>> allJobs, String searchTerm) {
+    public static ArrayList<HashMap<String, String>> findByValue(String searchTerm) {
 
         loadData();
 
-        String asterisks = "*****";
+        ArrayList<HashMap<String, String>> searchJobs = new ArrayList<>();
 
-        if (allJobs.size() == 0) {
+
+        if (searchJobs.size() == 0) {
             System.out.println("No jobs available");
-            return ;
         }
 
 
-        for (HashMap<String, String> job : allJobs) {
-            for (Map.Entry<String, String> listing : job.entrySet())
-                if (job.containsKey(searchTerm)){
-                    System.out.println(listing.getKey() + ": " + listing.getValue());
+
+        for (HashMap<String, String > job : allJobs) {
+            if (job.containsKey(searchTerm)) {
+                for (Map.Entry<String, String> listing : job.entrySet()){
+                    String random = listing.getValue();
+                    String random2 = listing.getKey();
+                    System.out.println(random);
+                    System.out.println(random2);
+//                    searchJobs.add(random, random2);
+//                    searchTerm.add(listing.getValue(), listing.getKey());
                 }
+            }
         }
-
-
+        return searchJobs;
     }
 
 }
+
+
+//        String asterisks = "*****";
+//
+//        if (allJobs.size() == 0) {
+//            System.out.println("No jobs available");
+//            return ;
+//        }
+//
+//
+//        for (HashMap<String, String> job : allJobs) {
+//            ArrayList<HashMap<String, String>> jobList = new ArrayList<>();
+//            for (Map.Entry<String, String> listing : job.entrySet())
+//                if (job.containsKey(searchTerm)){
+//                    jobList += listing.getKey() + listing.getValue();
+//                }
+//        }
+
+
