@@ -131,16 +131,23 @@ public class JobData {
         loadData();
 
         ArrayList<HashMap<String, String>> searchJobs = new ArrayList<>();
+        ArrayList<HashMap<String, String>> lowerCaseJobs = new ArrayList<>();
 
 
-        if (searchJobs.size() == 0) {
-            System.out.println("No jobs available");
-        }
+//        if (searchJobs.size() == 0) {
+//            System.out.println("No jobs available");
+//        }
 
 
 
         for (HashMap<String, String > job : allJobs) {
-            if (job.containsKey(searchTerm)) {
+            if (job.toString().toLowerCase().contains(searchTerm.toLowerCase())) {
+                searchJobs.add(job);
+
+
+
+
+           /** if (job.containsKey(searchTerm)) {
                 for (Map.Entry<String, String> listing : job.entrySet()){
                     String random = listing.getValue();
                     String random2 = listing.getKey();
@@ -148,7 +155,7 @@ public class JobData {
                     System.out.println(random2);
 //                    searchJobs.add(random, random2);
 //                    searchTerm.add(listing.getValue(), listing.getKey());
-                }
+                } **/
             }
         }
         return searchJobs;
